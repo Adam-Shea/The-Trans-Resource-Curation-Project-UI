@@ -18,6 +18,7 @@ jobs:
             cd nginx/The-Trans-Resource-Curation-Project-UI
             git pull
             echo 'Deployment successful to digital ocean' 
+            nvm use 17
             npm install
             npm run build
             echo 'Build Successful' 
