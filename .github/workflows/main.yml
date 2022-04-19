@@ -15,8 +15,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
      
           script: |
-            cd nginx 
-            git clone https://github.com/Adam-Shea/The-Trans-Resource-Curation-Project-UI.git
+            cd nginx/The-Trans-Resource-Curation-Project-UI
+            git pull
             echo 'Deployment successful to digital ocean' 
             npm run build
             echo 'Build Successful' 
