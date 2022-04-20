@@ -16,7 +16,6 @@ jobs:
      
           script: |
             cd ../var/www/The-Trans-Resource-Curation-Project-UI
-            git restore package-lock.json
             git pull
             echo 'Deployment successful to digital ocean' 
             npm install
