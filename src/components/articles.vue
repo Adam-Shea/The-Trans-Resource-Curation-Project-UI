@@ -1,6 +1,8 @@
 <template>
-	<section v-for="(article, index) in articles" :key="index">
+	<section>
 		<Article
+			v-for="(article, index) in articles"
+			:key="index"
 			:title="article.title"
 			:text="article.text"
 			:date="article.createdAt"
@@ -28,5 +30,6 @@ section {
 	justify-content: space-evenly;
 	flex-wrap: wrap;
 	width: 100%;
+	margin-top: 20px;
 }
 </style>
