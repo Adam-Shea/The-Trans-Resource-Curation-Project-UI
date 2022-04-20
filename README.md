@@ -1,6 +1,6 @@
 # Trans Resource Curation Project UI
 
-This ui is built using vue.js and typescript.
+This UI is built using vue.js and typescript.
 
 ## Project setup
 
