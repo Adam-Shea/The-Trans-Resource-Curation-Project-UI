@@ -34,5 +34,8 @@ body {
 		background-color: rgb(7, 17, 17);
 		color: white;
 	}
+	nav a {
+		color: white !important;
+	}
 }
 </style>

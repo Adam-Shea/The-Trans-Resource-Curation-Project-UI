@@ -1,17 +1,29 @@
 <template>
 	<div class="home">
 		<UnderConstruction msg="Welcome to Your Vue.js + TypeScript App" />
+		<Articles :articles="articles" />
 	</div>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
-import UnderConstruction from '@/components/UnderConstruction.vue'; // @ is an alias to /src
+import UnderConstruction from '@/components/UnderConstruction.vue';
+import Articles from '@/components/articles.vue';
+import { defineComponent } from 'vue';
+import axios from 'axios';
 
-@Options({
-	components: {
-		UnderConstruction,
+export default defineComponent({
+	components: { UnderConstruction, Articles },
+	data(): { articles: any } {
+		return {
+			articles: [],
+		};
 	},
-})
-export default class HomeView extends Vue {}
+	mounted() {
+		axios
+			.get(`${process.env.VUE_APP_API_URL}/article`, {
+				headers: {},
+			})
+			.then((response) => (this.articles = response.data));
+	},
+});
 </script>

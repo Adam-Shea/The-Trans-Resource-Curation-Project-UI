@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="underConstruction">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			width="250"
@@ -20,19 +20,14 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { defineComponent } from 'vue';
 
-@Options({
-	props: {
-		msg: String,
-	},
-})
-export default class HelloWorld extends Vue {}
+export default defineComponent({});
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-	margin: 40px 0 0;
+.underConstruction {
+	user-select: none;
 }
 </style>
