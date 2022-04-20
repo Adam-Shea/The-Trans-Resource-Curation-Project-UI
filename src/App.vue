@@ -4,12 +4,14 @@
 </template>
 
 <style>
-#app {
+body {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-align: center;
 	color: #2c3e50;
+	width: 100%;
+	height: 100%;
 }
 
 nav {
@@ -23,5 +25,14 @@ nav a {
 
 nav a.router-link-exact-active {
 	color: black;
+}
+body {
+	margin: 0px;
+}
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: rgb(7, 17, 17);
+		color: white;
+	}
 }
 </style>
