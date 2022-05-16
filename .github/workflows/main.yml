@@ -3,28 +3,28 @@ name: Deploy dev
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build-and-deploy:
     name: Build and deploy
     runs-on: ubuntu-latest
-    
+
     steps:
-    - uses: actions/checkout@v2
-      
-    - name: Install Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 17.x
-      
-    - name: Build website
-      run: |
-        npm install
-        npm run build
-        
-    - name: Deploy to Azure
-      uses: TravisSpomer/deploy-to-azure-storage@v1.4.0
-      with:
-        source-path: dist
-        sas-url: ${{ secrets.DEPLOY_SAS_URL }}
+      - uses: actions/checkout@v2
+
+      - name: Install Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 17.x
+
+      - name: Build website
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy to Azure
+        uses: Adam-Shea/deploy-to-azure-storage
+        with:
+          source-path: dist
+          sas-url: ${{ secrets.DEPLOY_SAS_URL }}
