@@ -84,7 +84,7 @@ const DeployToAzureStorage = async () => {
                         contentEncoding = "--content-encoding='gzip'"
                     }
 
-                    await exec.exec(azCopyCommand, ["copy", subPath, `--recursive=true ${urlHost}${container}/${file}/${subFile}?${urlQuery}`, `${contentType} ${contentEncoding}`, ...excludeFlags])
+                    await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, `--recursive=true ${contentType} ${contentEncoding}`, ...excludeFlags])
                 }
             } else {
                 core.info(path)
