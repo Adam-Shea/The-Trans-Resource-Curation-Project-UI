@@ -83,9 +83,6 @@ const DeployToAzureStorage = async () => {
                     } else if (subPath.includes(".gz")) {
                         contentEncoding = "--content-encoding='gzip'"
                     }
-                    else {
-                        contentEncoding = "--overwrite"
-                    }
 
                     await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, `${contentType} ${contentEncoding}`, ...excludeFlags])
                 }
@@ -104,8 +101,6 @@ const DeployToAzureStorage = async () => {
                     contentEncoding = "--content-encoding='gzip'"
                 } else if (path.includes(".gz")) {
                     contentEncoding = "--content-encoding='gzip'"
-                } else {
-                    contentEncoding = "--overwrite"
                 }
                 await exec.exec(azCopyCommand, ["copy", path, destUrl, `${contentType} ${contentEncoding}`, ...excludeFlags])
             }
