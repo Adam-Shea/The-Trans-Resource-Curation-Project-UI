@@ -72,11 +72,11 @@ const DeployToAzureStorage = async () => {
                     let contentType = ""
                     let contentEncoding = ""
                     if (subPath.includes(".html")) {
-                        contentType = '--content-type=text'
+                        contentType = '--content-type=text/html'
                     } else if (subPath.includes(".css")) {
-                        contentType = '--content-type=text'
+                        contentType = '--content-type=text/css'
                     } else if (subPath.includes(".js")) {
-                        contentType = '--content-type=application'
+                        contentType = '--content-type=application/javascript'
                     }
                     if (subPath.includes(".br")) {
                         contentEncoding = '--content-encoding=gzip'
@@ -84,20 +84,20 @@ const DeployToAzureStorage = async () => {
                         contentEncoding = '--content-encoding=gzip'
                     }
 
-                    await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, contentType, contentEncoding, '--recursive'])
+                    await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, contentType])
                 }
             } else {
                 core.info(path)
                 let contentType = ""
                 let contentEncoding = ""
                 if (path.includes(".html")) {
-                    contentType = '--content-type=text'
+                    contentType = '--content-type=text/html'
                 } else if (path.includes(".css")) {
-                    contentType = '--content-type=text'
+                    contentType = '--content-type=text/css'
                 } else if (path.includes(".js")) {
-                    contentType = '--content-type=application'
+                    contentType = '--content-type=application/javascript'
                 } else if (path.includes(".ico")) {
-                    contentType = '--content-type=image'
+                    contentType = '--content-type=image/vnd.microsoft.icon'
                     contentEncoding = '--content-encoding="gzip"'
                 }
                 if (path.includes(".br")) {
@@ -105,7 +105,7 @@ const DeployToAzureStorage = async () => {
                 } else if (path.includes(".gz")) {
                     contentEncoding = '--content-encoding=gzip'
                 }
-                await exec.exec(azCopyCommand, ["copy", path, destUrl, contentType, contentEncoding, '--recursive'])
+                await exec.exec(azCopyCommand, ["copy", path, destUrl, contentType])
             }
         }
 
