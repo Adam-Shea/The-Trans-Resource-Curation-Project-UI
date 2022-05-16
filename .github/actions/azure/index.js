@@ -62,7 +62,7 @@ const DeployToAzureStorage = async () => {
                 return
             }
         }
-        await exec.exec(azCopyCommand, ["rm", subPath, `${urlHost}${container}?${urlQuery}`])
+        await exec.exec(azCopyCommand, ["rm", subPath, `${urlHost}${container}?${urlQuery}`, "--recursive"])
         for (const file of fs.readdirSync(sourcePath)) {
             const path = sourcePath + "/" + file
             if (fs.lstatSync(path).isDirectory()) {
