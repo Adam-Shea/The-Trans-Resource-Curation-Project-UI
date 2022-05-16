@@ -24,8 +24,9 @@ jobs:
           npm run build
 
       - name: Deploy to Azure
-        using: 'node12'
-        run: 'azure.js'
+        runs:
+          using: 'node12'
+          main: 'azure.js'
         with:
           source-path: dist
           sas-url: ${{ secrets.DEPLOY_SAS_URL }}
