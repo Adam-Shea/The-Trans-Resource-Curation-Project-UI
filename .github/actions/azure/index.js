@@ -72,11 +72,11 @@ const DeployToAzureStorage = async () => {
                     let contentType = ""
                     let contentEncoding = ""
                     if (subPath.includes(".html")) {
-                        contentType = '--content-type=text/html'
+                        contentType = '--content-type=text'
                     } else if (subPath.includes(".css")) {
-                        contentType = '--content-type=text/css'
+                        contentType = '--content-type=text'
                     } else if (subPath.includes(".js")) {
-                        contentType = '--content-type=application/javascript'
+                        contentType = '--content-type=application'
                     }
                     if (subPath.includes(".br")) {
                         contentEncoding = '--content-encoding=gzip'
@@ -91,13 +91,13 @@ const DeployToAzureStorage = async () => {
                 let contentType = ""
                 let contentEncoding = ""
                 if (path.includes(".html")) {
-                    contentType = '--content-type=text/html'
+                    contentType = '--content-type=text'
                 } else if (path.includes(".css")) {
-                    contentType = '--content-type=text/css'
+                    contentType = '--content-type=text'
                 } else if (path.includes(".js")) {
-                    contentType = '--content-type=application/javascript'
+                    contentType = '--content-type=application'
                 } else if (path.includes(".ico")) {
-                    contentType = '--content-type=image/vnd.microsoft.icon'
+                    contentType = '--content-type=image'
                     contentEncoding = '--content-encoding="gzip"'
                 }
                 if (path.includes(".br")) {
