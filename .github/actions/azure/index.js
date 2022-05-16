@@ -66,8 +66,8 @@ const DeployToAzureStorage = async () => {
         for (const file of fs.readdirSync(sourcePath)) {
             const path = sourcePath + "/" + file
             if (fs.lstatSync(path).isDirectory()) {
-                for (const file of fs.readdirSync(path)) {
-                    const subPath = path + "/" + file
+                for (const subFile of fs.readdirSync(path)) {
+                    const subPath = path + "/" + subFile
                     core.info(subPath)
                     let contentType = ""
                     let contentEncoding = ""
@@ -87,7 +87,7 @@ const DeployToAzureStorage = async () => {
                         contentEncoding = "--overwrite"
                     }
 
-                    await exec.exec(azCopyCommand, ["copy", subPath, destUrl + "/" + file, `${contentType} ${contentEncoding}`, ...excludeFlags])
+                    await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}`, `${contentType} ${contentEncoding}`, ...excludeFlags])
                 }
             } else {
                 core.info(path)
