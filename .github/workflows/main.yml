@@ -24,7 +24,7 @@ jobs:
           npm run build
 
       - name: Deploy to Azure
-        runs:
+        run:
           using: 'node12'
           main: 'azure.js'
         inputs:
