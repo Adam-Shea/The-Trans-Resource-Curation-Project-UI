@@ -89,9 +89,9 @@ const DeployToAzureStorage = async () => {
                     }
 
                     if (contentEncoding) {
-                        exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, contentEncoding, contentType])
+                        await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, contentEncoding, contentType])
                     } else {
-                        exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, contentType])
+                        await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, contentType])
                     }
                 }
             } else {
@@ -114,9 +114,9 @@ const DeployToAzureStorage = async () => {
                 }
 
                 if (contentEncoding) {
-                    exec.exec(azCopyCommand, ["copy", path, destUrl, contentEncoding, contentType])
+                    await exec.exec(azCopyCommand, ["copy", path, destUrl, contentEncoding, contentType])
                 } else {
-                    exec.exec(azCopyCommand, ["copy", path, destUrl, contentType])
+                    await exec.exec(azCopyCommand, ["copy", path, destUrl, contentType])
                 }
             }
         }
