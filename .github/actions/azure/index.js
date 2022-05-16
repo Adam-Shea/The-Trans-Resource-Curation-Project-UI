@@ -62,7 +62,13 @@ const DeployToAzureStorage = async () => {
                 return
             }
         }
-        errorCode = await exec.exec(azCopyCommand, ["sync", sourcePath, destUrl, '--no-guess-mime-type', ...excludeFlags])
+
+        for (const file of fs.readdirSync(sourcePath)) {
+            core.info(file)
+        }
+
+
+        errorCode = await exec.exec(azCopyCommand, ["copy", sourcePath, destUrl, '--no-guess-mime-type', ...excludeFlags])
         if (errorCode) {
             core.setFailed("Deployment failed. See log for more details.")
             return
