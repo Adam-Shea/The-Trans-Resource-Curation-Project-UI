@@ -19,7 +19,6 @@ export default defineComponent({
 		};
 	},
 	mounted() {
-		console.log(process.env.NODE_ENV)
 		axios
 			.get(`${process.env.NODE_ENV == "production"?"https://trcp-dev.azurewebsites.net/api":process.env.VUE_APP_API_URL}/articles`, {
 				headers: {},
