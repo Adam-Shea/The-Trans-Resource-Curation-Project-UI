@@ -72,37 +72,37 @@ const DeployToAzureStorage = async () => {
                     let contentType = ""
                     let contentEncoding = ""
                     if (subPath.includes(".html")) {
-                        contentType = "text/html"
+                        contentType = "--content-type 'text/html'"
                     } else if (subPath.includes(".css")) {
-                        contentType = "text/css"
+                        contentType = "--content-type 'text/css'"
                     } else if (subPath.includes(".js")) {
-                        contentType = "application/javascript"
+                        contentType = "--content-type 'application/javascript'"
                     }
                     if (subPath.includes(".br")) {
-                        contentEncoding = "gzip"
+                        contentEncoding = "--content-encoding 'gzip'"
                     } else if (subPath.includes(".gz")) {
-                        contentEncoding = "gzip"
+                        contentEncoding = "--content-encoding 'gzip'"
                     }
 
-                    await exec.exec(azCopyCommand, ["copy", subPath, destUrl, `--content-type '${contentType}' --content-encoding '${contentEncoding}'`, ...excludeFlags])
+                    await exec.exec(azCopyCommand, ["copy", subPath, destUrl, `${contentType} ${contentEncoding}`, ...excludeFlags])
                 }
             } else {
                 core.info(path)
                 let contentType = ""
                 let contentEncoding = ""
                 if (path.includes(".html")) {
-                    contentType = "text/html"
+                    contentType = "--content-type 'text/html'"
                 } else if (path.includes(".css")) {
-                    contentType = "text/css"
+                    contentType = "--content-type 'text/css'"
                 } else if (path.includes(".js")) {
-                    contentType = "application/javascript"
+                    contentType = "--content-type 'application/javascript'"
                 }
                 if (path.includes(".br")) {
-                    contentEncoding = "gzip"
+                    contentEncoding = "--content-encoding 'gzip'"
                 } else if (path.includes(".gz")) {
-                    contentEncoding = "gzip"
+                    contentEncoding = "--content-encoding 'gzip'"
                 }
-                await exec.exec(azCopyCommand, ["copy", path, destUrl, `--content-type '${contentType}' --content-encoding '${contentEncoding}`, ...excludeFlags])
+                await exec.exec(azCopyCommand, ["copy", path, destUrl, `${contentType} ${contentEncoding}`, ...excludeFlags])
             }
         }
 
