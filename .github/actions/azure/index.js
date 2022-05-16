@@ -84,7 +84,7 @@ const DeployToAzureStorage = async () => {
                         contentEncoding = "--content-encoding='gzip'"
                     }
 
-                    await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, `${contentType} ${contentEncoding}`, ...excludeFlags])
+                    await exec.exec(azCopyCommand, ["copy", subPath, `--recursive=true ${urlHost}${container}/${file}/${subFile}?${urlQuery}`, `${contentType} ${contentEncoding}`, ...excludeFlags])
                 }
             } else {
                 core.info(path)
@@ -102,12 +102,10 @@ const DeployToAzureStorage = async () => {
                 } else if (path.includes(".gz")) {
                     contentEncoding = "--content-encoding='gzip'"
                 }
-                await exec.exec(azCopyCommand, ["copy", path, destUrl, `${contentType} ${contentEncoding}`, ...excludeFlags])
+                await exec.exec(azCopyCommand, ["copy", path, destUrl, `--recursive=true ${contentType} ${contentEncoding}`, ...excludeFlags])
             }
         }
 
-
-        errorCode = await exec.exec(azCopyCommand, ["copy", sourcePath, destUrl, '--no-guess-mime-type', ...excludeFlags])
         if (errorCode) {
             core.setFailed("Deployment failed. See log for more details.")
             return
