@@ -20,7 +20,7 @@ export default defineComponent({
 	},
 	mounted() {
 		axios
-			.get(`${process.env.VUE_APP_API_URL}/articles`, {
+			.get(`${process.env.NODE_ENV?"https://trcp-dev.azurewebsites.net/api/articles":process.env.VUE_APP_API_URL}/articles`, {
 				headers: {},
 			})
 			.then((response) => (this.articles = response.data));
