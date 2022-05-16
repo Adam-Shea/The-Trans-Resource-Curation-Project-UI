@@ -4,13 +4,13 @@
 			v-for="(article, index) in articles"
 			:key="index"
 			:title="article.title"
-			:text="article.text"
+			:text="article.description"
 			:date="article.createdAt"
 		/>
 	</section>
 </template>
 
-<script lang="ts">
+<script lang="js">
 import { defineComponent } from 'vue';
 import Article from './article.vue';
 
