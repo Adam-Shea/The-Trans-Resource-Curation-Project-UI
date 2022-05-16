@@ -48,7 +48,7 @@ const DeployToAzureStorage = async () => {
         core.setSecret(urlQuery)
 
         const azCopyCommand = (process.platform === "win32") ? "azcopy" : "azcopy10"
-        const commonFlags = ['--no-guess-mime-type']
+        const commonFlags = []
         const cacheControlFlags = ["--cache-control", "public, max-age=31536000, immutable"]
         const includeFlags = immutableExt ? ["--include-pattern", immutableExt] : []
         const excludeFlags = immutableExt ? ["--exclude-pattern", immutableExt] : []
@@ -62,7 +62,7 @@ const DeployToAzureStorage = async () => {
                 return
             }
         }
-        errorCode = await exec.exec(azCopyCommand, ["sync", sourcePath, destUrl, ...commonFlags, ...excludeFlags])
+        errorCode = await exec.exec(azCopyCommand, ["sync", sourcePath, destUrl, '--no-guess-mime-type', ...excludeFlags])
         if (errorCode) {
             core.setFailed("Deployment failed. See log for more details.")
             return
