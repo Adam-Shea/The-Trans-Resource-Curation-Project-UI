@@ -24,15 +24,7 @@ jobs:
           npm run build
 
       - name: Deploy to Azure
-        run:
-          using: 'node12'
-          main: 'azure.js'
-        inputs:
-          source-path:
-            description: 'The location of your built site files. (For example, "out".)'
-            required: true
-            default: dist
-          sas-url:
-            description: 'A SAS URL for your storage account. (You should store this in a Secret.)'
-            required: true
-            default: ${{ secrets.DEPLOY_SAS_URL }}
+        uses: azure.yml/deploy-to-azure-storage
+        with:
+          source-path: dist
+          sas-url: ${{ secrets.DEPLOY_SAS_URL }}
