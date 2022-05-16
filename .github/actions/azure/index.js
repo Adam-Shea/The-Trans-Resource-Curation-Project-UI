@@ -102,7 +102,7 @@ const DeployToAzureStorage = async () => {
                 } else if (path.includes(".gz")) {
                     contentEncoding = "--content-encoding=gzip"
                 }
-                await exec.exec(azCopyCommand, ["copy", path, destUrl, contentType, contentEncoding)
+                await exec.exec(azCopyCommand, ["copy", path, destUrl, contentType, contentEncoding])
             }
         }
 
