@@ -69,9 +69,40 @@ const DeployToAzureStorage = async () => {
                 for (const file of fs.readdirSync(path)) {
                     const subPath = path + "/" + file
                     core.info(subPath)
+                    let contentType = ""
+                    let contentEncoding = ""
+                    if (subPath.includes(".html")) {
+                        contentType = "text/html"
+                    } else if (subPath.includes(".css")) {
+                        contentType = "text/css"
+                    } else if (subPath.includes(".js")) {
+                        contentType = "application/javascript"
+                    }
+                    if (subPath.includes(".br")) {
+                        contentEncoding = "gzip"
+                    } else if (subPath.includes(".gz")) {
+                        contentEncoding = "gzip"
+                    }
+
+                    await exec.exec(azCopyCommand, ["copy", subPath, destUrl, `--content-type '${contentType}' --content-encoding '${contentEncoding}'`, ...excludeFlags])
                 }
             } else {
                 core.info(path)
+                let contentType = ""
+                let contentEncoding = ""
+                if (path.includes(".html")) {
+                    contentType = "text/html"
+                } else if (path.includes(".css")) {
+                    contentType = "text/css"
+                } else if (path.includes(".js")) {
+                    contentType = "application/javascript"
+                }
+                if (path.includes(".br")) {
+                    contentEncoding = "gzip"
+                } else if (path.includes(".gz")) {
+                    contentEncoding = "gzip"
+                }
+                await exec.exec(azCopyCommand, ["copy", path, destUrl, `--content-type '${contentType}' --content-encoding '${contentEncoding, ...excludeFlags])
             }
         }
 
