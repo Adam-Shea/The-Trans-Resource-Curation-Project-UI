@@ -85,7 +85,9 @@ const DeployToAzureStorage = async () => {
                     }
 
                     await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, contentType])
-                    await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, contentEncoding])
+                    if (contentEncoding) {
+                        await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, contentEncoding])
+                    }
                 }
             } else {
                 core.info(path)
@@ -107,7 +109,9 @@ const DeployToAzureStorage = async () => {
                     contentEncoding = '--content-encoding=gzip'
                 }
                 await exec.exec(azCopyCommand, ["copy", path, destUrl, contentType])
-                await exec.exec(azCopyCommand, ["copy", path, destUrl, contentEncoding])
+                if (contentEncoding) {
+                    await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, contentEncoding])
+                }
             }
         }
 
