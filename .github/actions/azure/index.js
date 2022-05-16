@@ -63,7 +63,7 @@ const DeployToAzureStorage = async () => {
             }
         }
         let indexData = fs.readFileSync("dist/index.html").toString('utf-8')
-        fs.writeFileSync("dist/index.html", indexData.replace(/.css/g, ".css.gz").replace(/.html/g, ".html.gz").replace(/.js/g, ".js.gz"))
+        fs.writeFileSync("dist/index.html", indexData.replace(/.css"/g, '.css.gz"').replace(/.html"/g, '.html.gz"').replace(/.js"/g, '.js.gz"'))
         await exec.exec(azCopyCommand, ["rm", `${urlHost}${container}?${urlQuery}`, "--recursive"])
         for (const file of fs.readdirSync(sourcePath)) {
             const path = sourcePath + "/" + file
