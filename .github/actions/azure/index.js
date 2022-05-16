@@ -62,7 +62,7 @@ const DeployToAzureStorage = async () => {
                 return
             }
         }
-
+        await exec.exec(azCopyCommand, ["rm", subPath, `${urlHost}${container}?${urlQuery}`])
         for (const file of fs.readdirSync(sourcePath)) {
             const path = sourcePath + "/" + file
             if (fs.lstatSync(path).isDirectory()) {
@@ -84,7 +84,7 @@ const DeployToAzureStorage = async () => {
                         contentEncoding = "--content-encoding=gzip"
                     }
 
-                    await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, ...[contentType, contentEncoding, '--recursive=true']])
+                    await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, [contentType, contentEncoding, '--recursive=true']])
                 }
             } else {
                 core.info(path)
@@ -105,7 +105,7 @@ const DeployToAzureStorage = async () => {
                 } else if (path.includes(".gz")) {
                     contentEncoding = "--content-encoding=gzip"
                 }
-                await exec.exec(azCopyCommand, ["copy", path, destUrl, ...[contentType, contentEncoding, '--recursive=true']])
+                await exec.exec(azCopyCommand, ["copy", path, destUrl, [contentType, contentEncoding, '--recursive=true']])
             }
         }
 
