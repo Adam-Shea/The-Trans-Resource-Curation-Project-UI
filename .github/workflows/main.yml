@@ -24,7 +24,7 @@ jobs:
           npm run build
 
       - name: Deploy to Azure
-        uses: ./.github/actions/azure/action.yml
+        uses: ./.github/actions/azure/
         with:
           source-path: dist
           sas-url: ${{ secrets.DEPLOY_SAS_URL }}
