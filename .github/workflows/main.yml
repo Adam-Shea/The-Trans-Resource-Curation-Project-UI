@@ -24,7 +24,7 @@ jobs:
           npm run build
 
       - name: Deploy to Azure
-        uses: Adam-Shea/deploy-to-azure-storage@1.4.1
+        uses: Adam-Shea/deploy-to-azure-storage@14.2
         with:
           source-path: dist
           sas-url: ${{ secrets.DEPLOY_SAS_URL }}
