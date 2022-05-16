@@ -73,17 +73,17 @@ const DeployToAzureStorage = async () => {
                     core.info(subPath)
                     let contentType = ""
                     let contentEncoding = ""
-                    if (path.includes(".html")) {
+                    if (subFile.includes(".html")) {
                         contentType = '--content-type=text/html'
-                    } else if (path.includes(".css")) {
+                    } else if (subFile.includes(".css")) {
                         contentType = '--content-type=text/css'
-                    } else if (path.includes(".js")) {
+                    } else if (subFile.includes(".js")) {
                         contentType = '--content-type=application/javascript'
                         core.info("includes js")
                     }
-                    if (path.includes(".br")) {
+                    if (subFile.includes(".br")) {
                         contentEncoding = '--content-encoding=gzip'
-                    } else if (path.includes(".gz")) {
+                    } else if (subFile.includes(".gz")) {
                         contentEncoding = '--content-encoding=gzip'
                         core.info("includes js")
                     }
