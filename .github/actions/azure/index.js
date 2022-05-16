@@ -73,17 +73,19 @@ const DeployToAzureStorage = async () => {
                     core.info(subPath)
                     let contentType = ""
                     let contentEncoding = ""
-                    if (subPath.includes(".html")) {
+                    if (path.includes(".html")) {
                         contentType = '--content-type=text/html'
-                    } else if (subPath.includes(".css")) {
+                    } else if (path.includes(".css")) {
                         contentType = '--content-type=text/css'
-                    } else if (subPath.includes(".js")) {
+                    } else if (path.includes(".js")) {
                         contentType = '--content-type=application/javascript'
+                        core.info("includes js")
                     }
-                    if (subPath.includes(".br")) {
+                    if (path.includes(".br")) {
                         contentEncoding = '--content-encoding=gzip'
-                    } else if (subPath.includes(".gz")) {
+                    } else if (path.includes(".gz")) {
                         contentEncoding = '--content-encoding=gzip'
+                        core.info("includes js")
                     }
 
                     exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}/${subFile}?${urlQuery}`, contentType])
