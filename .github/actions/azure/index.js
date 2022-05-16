@@ -74,17 +74,17 @@ const DeployToAzureStorage = async () => {
                     let contentType = ""
                     let contentEncoding = ""
                     if (subFile.includes(".html")) {
-                        contentType = '--[content-type]=text/html'
+                        contentType = '--content-type=texthtml'
                     } else if (subFile.includes(".css")) {
-                        contentType = '--[content-type]=text/css'
+                        contentType = '--content-type=textcss'
                     } else if (subFile.includes(".js")) {
-                        contentType = '--[content-type]=application/javascript'
+                        contentType = '--content-type=applicationjavascript'
                         core.info("includes js")
                     }
                     if (subFile.includes(".br")) {
-                        contentEncoding = '--[content-encoding]=gzip'
+                        contentEncoding = '--content-encoding=gzip'
                     } else if (subFile.includes(".gz")) {
-                        contentEncoding = '--[content-encoding]=gzip'
+                        contentEncoding = '--content-encoding=gzip'
                         core.info("includes js")
                     }
 
@@ -98,13 +98,13 @@ const DeployToAzureStorage = async () => {
                 let contentType = ""
                 let contentEncoding = ""
                 if (path.includes(".html")) {
-                    contentType = '--content-type=text/html'
+                    contentType = '--content-type=texthtml'
                 } else if (path.includes(".css")) {
-                    contentType = '--content-type=text/css'
+                    contentType = '--content-type=textcss'
                 } else if (path.includes(".js")) {
-                    contentType = '--content-type=application/javascript'
+                    contentType = '--content-type=applicationjavascript'
                 } else if (path.includes(".ico")) {
-                    contentType = '--content-type=image/vnd.microsoft.icon'
+                    contentType = '--content-type=imagevndmicrosofticon'
                     contentEncoding = '--content-encoding="gzip"'
                 }
                 if (path.includes(".br")) {
