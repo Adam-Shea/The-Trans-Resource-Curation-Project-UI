@@ -31,9 +31,8 @@ jobs:
           source-path:
             description: 'The location of your built site files. (For example, "out".)'
             required: true
+            default: dist
           sas-url:
             description: 'A SAS URL for your storage account. (You should store this in a Secret.)'
             required: true
-        with:
-          source-path: dist
-          sas-url: ${{ secrets.DEPLOY_SAS_URL }}
+            default: ${{ secrets.DEPLOY_SAS_URL }}
