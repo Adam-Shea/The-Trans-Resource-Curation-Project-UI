@@ -96,6 +96,9 @@ const DeployToAzureStorage = async () => {
                     contentType = "--content-type=text/css"
                 } else if (path.includes(".js")) {
                     contentType = "--content-type=application/javascript"
+                } else if (subPath.includes(".ico")) {
+                    contentType = "--content-type=image/vnd.microsoft.icon"
+                    contentEncoding = "--content-encoding=gzip"
                 }
                 if (path.includes(".br")) {
                     contentEncoding = "--content-encoding=gzip"
