@@ -64,7 +64,15 @@ const DeployToAzureStorage = async () => {
         }
 
         for (const file of fs.readdirSync(sourcePath)) {
-            core.info(file)
+            const path = sourcePath + "/" + file
+            if (fs.lstatSync(path).isDirectory()) {
+                for (const file of fs.readdirSync(path)) {
+                    const subPath = path + "/" + file
+                    core.info(subPath)
+                }
+            } else {
+                core.info(path)
+            }
         }
 
 
