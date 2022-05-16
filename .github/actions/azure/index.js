@@ -87,7 +87,7 @@ const DeployToAzureStorage = async () => {
                         contentEncoding = "--overwrite"
                     }
 
-                    await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}`, `${contentType} ${contentEncoding}`, ...excludeFlags])
+                    await exec.exec(azCopyCommand, ["copy", subPath, `${urlHost}${container}/${file}?${urlQuery}`, `${contentType} ${contentEncoding}`, ...excludeFlags])
                 }
             } else {
                 core.info(path)
